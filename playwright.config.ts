@@ -10,7 +10,10 @@ export default defineConfig({
   reporter: 'html',
   use: {
     baseURL: env.baseURL,
-    trace: 'on-first-retry',
+    headless: true,
+    trace: 'retain-on-failure',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */

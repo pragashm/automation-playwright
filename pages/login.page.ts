@@ -1,11 +1,10 @@
-import {Page, expect} from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 export class LoginPage {
 
-    constructor(private page: Page){};
+    constructor(private page: Page) { };
 
-    async visitURL() {
-        await this.page.goto('/login'); 
-        console.log('TEsting login');
+    async visitURL(page: string) {
+        await this.page.goto('/' + page);
     }
 
     async loginToApp(userName: string, password: string) {
@@ -19,6 +18,6 @@ export class LoginPage {
         await this.page.getByRole('link', { name: 'Logout' }).click();
         await expect(this.page.getByRole('link', { name: 'Signup / Login' })).toBeVisible();
     }
-    
+
 
 }

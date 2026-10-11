@@ -1,5 +1,17 @@
 name: Playwright Tests
 on:
+  schedule:
+    - cron: '30 4 * * *'
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: 'Running regression tests by default'
+        required: true
+        type: choice
+        options:
+          - smoke
+          - regression
+        default: regression
   push:
     branches: [ main, master ]
   pull_request:
@@ -8,6 +20,10 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      BASE_URL=https://www.automationexercise.com/
+      USERNAME=${{secrets.USERNAME}}
+      PASSWORD=${{secrets.PASSWORD}}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -16,9 +32,16 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright install --with-deps chromium
+    - name: Run smoke suite
+        if: github.event_name != 'workflow_dispatch' || inputs.suite == 'smoke'
+        run: npm run smoke
+    - name: Run regression suite
+        if: github.event_name == 'workflow_dispatch' && inputs.suite == 'regression'
+        run: npm run regression
+    - name: Run all tests
+        if: github.event_name == 'workflow_dispatch' && inputs.suite == 'all'
+        run: npm test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
