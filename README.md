@@ -1,19 +1,19 @@
-## PLAYWRIGHT AUTOMATION PROJECT FOR https://www.automationexercise.com/. ##
+## PLAYWRIGHT AUTOMATION PROJECT FOR https://www.automationexercise.com/ ##
 
 End-to-end browser automation framework built with Playwright and TypeScript for Automation Exercise website.
 
 This project demonstrates reusable page objects, end-to-end test journeys, smoke and regression test selection, environment-based configuration, exception-scenario simulation, and CI automation using GitHub Actions.
 
-# TECH STACK:
+## TECH STACK
 
-Playwright
-TypeScript
-Node.js
-dotenv
-GitHub Actions
-Playwright HTML Reporter
+- Playwright
+- TypeScript
+- Node.js
+- dotenv
+- GitHub Actions
+- Playwright HTML Reporter
 
-# FOLDER STRUCTURE:
+## FOLDER STRUCTURE:
 
     automation-playwright/
     ├── .github/
@@ -42,11 +42,11 @@ Playwright HTML Reporter
 - .github/workflows/ — Defines automated CI execution.
 - playwright.config.ts — Configures test discovery, browser settings, retries, timeouts, and reporting
 
-# Automated Scenarios
+## Automated Scenarios
 1. Happy path: Cart persistence
 2. Exception scenario: Product becomes unavailable
 
-# Installation:
+## Installation:
 Clone the repository:
 
 git clone https://github.com/pragashm/automation-playwright.git
@@ -80,16 +80,16 @@ For Push, Pull requests - CI will trigger automatically
 Scheduled - Everyday 10 AM IST
 Manual - Trigger here - https://github.com/pragashm/automation-playwright/actions/workflows/playwright.yml
 
-# What’s not included for now:
-•	UI/API Folder Segregation
-•	When more tests are added, they need to be independent. Ex Storage State
-•	Fixtures for re-usability
-•	BeforeEach/beforeAll blocks for pre-requisites
-•	Git Branching and PR reviews – Only main branch for now
-•	Custom html reporting
-•	Utilities folder to include helpers like csv parsing, randomNumber methods
-•	Multi browser, devices testing
-•	Lint checks
+## What’s not included for now:
+-	UI/API Folder Segregation
+-	When more tests are added, they need to be independent. Ex Storage State
+-	Fixtures for re-usability
+-	BeforeEach/beforeAll blocks for pre-requisites
+-	Git Branching and PR reviews – Only main branch for now
+-	Custom html reporting
+-	Utilities folder to include helpers like csv parsing, randomNumber methods
+-	Multi browser, devices testing
+-	Lint checks
 
 
 Author
