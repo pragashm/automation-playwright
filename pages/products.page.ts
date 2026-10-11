@@ -20,7 +20,7 @@ export class ProductPage {
         await productOverlay
             .getByText('Add to cart')
             .click(); 
-        await this.page.getByText('Continue Shopping', { exact: true }).first();
+        await this.page.getByText('Continue Shopping', { exact: true }).first().click();
         await this.closeAdIfVisible();
     }
 
