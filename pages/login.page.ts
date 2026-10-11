@@ -4,7 +4,10 @@ export class LoginPage {
     constructor(private page: Page) { };
 
     async visitURL(page: string) {
-        await this.page.goto('/' + page);
+        await this.page.goto('/' + page, {
+            waitUntil: 'domcontentloaded',
+            timeout: 60_000
+        });
     }
 
     async loginToApp(userName: string, password: string) {

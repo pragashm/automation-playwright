@@ -16,7 +16,10 @@ export class CartPage {
     }
 
     async clearCart() {
-        await this.page.goto('/view_cart');
+        await this.page.goto('view_cart', {
+            waitUntil: 'domcontentloaded',
+            timeout: 60_000
+        });
         if(await this.page.locator('.cart_quantity_delete').isVisible()){
             await this.page.locator('.cart_quantity_delete').click();
         }
