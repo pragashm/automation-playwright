@@ -67,18 +67,18 @@ Configure the variables:
 ## Running Tests
 The following npm scripts are defined in package.json.
 
-npm test	#Run the complete test suite
-npm run smoke	#Run tests tagged with @smoke
-npm run regression	#Run tests tagged with @regression
+- npm test	#Run the complete test suite
+- npm run smoke	#Run tests tagged with @smoke
+- npm run regression	#Run tests tagged with @regression
 
 ## CI SETUP AND TRIGGERING PIPELINE RUN
 
 The workflow is defined in:
 .github/workflows/playwright.yml
 
-For Push, Pull requests - CI will trigger automatically
-Scheduled - Everyday 10 AM IST
-Manual - Trigger here - https://github.com/pragashm/automation-playwright/actions/workflows/playwright.yml
+- For Push, Pull requests - CI will trigger smoke tests automatically
+- Scheduled - Everyday 10 AM IST
+- Check CI results - https://github.com/pragashm/automation-playwright/actions
 
 ## What’s not included for now:
 -	UI/API Folder Segregation
