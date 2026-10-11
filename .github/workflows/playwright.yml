@@ -11,6 +11,7 @@ on:
         options:
           - smoke
           - regression
+          - all
         default: regression
   push:
     branches: [ main, master ]
@@ -21,9 +22,9 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     env:
-      BASE_URL=https://www.automationexercise.com/
-      USERNAME=${{secrets.USERNAME}}
-      PASSWORD=${{secrets.PASSWORD}}
+      BASE_URL: https://www.automationexercise.com/
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
