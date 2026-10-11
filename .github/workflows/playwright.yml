@@ -34,14 +34,14 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps chromium
     - name: Run smoke suite
-        if: github.event_name != 'workflow_dispatch' || inputs.suite == 'smoke'
-        run: npm run smoke
+      if: github.event_name != 'workflow_dispatch' || inputs.suite == 'smoke'
+      run: npm run smoke
     - name: Run regression suite
-        if: github.event_name == 'workflow_dispatch' && inputs.suite == 'regression'
-        run: npm run regression
+      if: github.event_name == 'workflow_dispatch' && inputs.suite == 'regression'
+      run: npm run regression
     - name: Run all tests
-        if: github.event_name == 'workflow_dispatch' && inputs.suite == 'all'
-        run: npm test
+      if: github.event_name == 'workflow_dispatch' && inputs.suite == 'all'
+      run: npm test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
