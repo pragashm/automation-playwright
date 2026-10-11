@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       suite:
-        description: 'Running regression tests by default'
+        description: 'Running scheduled tests - regression tests by default'
         required: true
         type: choice
         options:

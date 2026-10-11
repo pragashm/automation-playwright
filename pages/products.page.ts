@@ -10,6 +10,7 @@ export class ProductPage {
     }
 
     async addProduct(productName: string) {
+        await this.closeAdIfVisible();
         const productCard = await this.page.locator('.single-products').filter({ hasText: productName }).first();
         await productCard.hover();
         await this.closeAdIfVisible();
@@ -22,16 +23,22 @@ export class ProductPage {
         await this.page.getByText('Continue Shopping', { exact: true }).first();
         await this.closeAdIfVisible();
     }
+
     async closeAdIfVisible() {
-        const adFrame = this.page.frameLocator('#google_esf');
+        for (const frame of this.page.frames()) {
+            try {
+                const closeButton = frame.locator(
+                    '[aria-label="Close"], [aria-label="Close ad"]'
+                ).first();
 
-        const closeButton = adFrame.getByRole('button', {
-            name: 'Close ad',
-            exact: true
-        });
-
-        if (await closeButton.isVisible().catch(() => false)) {
-            await closeButton.click({ timeout: 3000 });
+                if (await closeButton.isVisible().catch(() => false)) {
+                    await closeButton.click({ timeout: 2000 });
+                    console.log('Ad closed');
+                    return;
+                }
+            } catch (error) {
+                
+            }
         }
     }
 

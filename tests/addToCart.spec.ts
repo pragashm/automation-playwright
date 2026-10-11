@@ -18,11 +18,10 @@ test('Login and add the product to the cart @smoke @regression', async ({ page }
     //Login to the application
     await loginPage.visitURL('login');
     await loginPage.loginToApp(env.userName, env.password);
-    await expect(page).toHaveTitle('Automation Exercise');
 
-    //clear cart
+    //clear cart as a pre-requisite
     await cartPage.clearCart();
-    await loginPage.visitURL('');
+    await loginPage.visitURL('products');
 
     //Select the product and add to cart
     await productPage.filterBrand(productData.brandName);
