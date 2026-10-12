@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
+    "prod": "TEST_ENV=prod playwright test",
     "smoke": "playwright test --grep @smoke",
     "regression": "playwright test --grep @regression",
     "report": "playwright show-report"

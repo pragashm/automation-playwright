@@ -3,7 +3,7 @@ import { LoginPage } from '../pages/login.page';
 import { ProductPage } from '../pages/products.page';
 import { CartPage } from '../pages/cart.page';
 import { env } from '../config/envConfig';
-import { productData } from '../data/productData';
+const { testData } = require('../data/data');
 
 
 test.beforeEach(async ({ page }) => {
@@ -24,12 +24,12 @@ test('Login and add the product to the cart @smoke @regression', async ({ page }
     await loginPage.visitURL('products');
 
     //Select the product and add to cart
-    await productPage.filterBrand(productData.brandName);
-    await productPage.addProduct(productData.productName);
+    await productPage.filterBrand(testData.brandName);
+    await productPage.addProduct(testData.productName);
 
     //Go to Cart and Validate the products
     await cartPage.viewCart();
-    await cartPage.validateProductInCart(productData.productName, productData.price, productData.quantity, productData.totalPrice);
+    await cartPage.validateProductInCart(testData.productName, testData.price, testData.quantity, testData.totalPrice);
 
     //Logout and re-login
     await loginPage.logout();
@@ -37,7 +37,7 @@ test('Login and add the product to the cart @smoke @regression', async ({ page }
 
     //Go to Cart and Validate the products one more time
     await cartPage.viewCart();
-    await cartPage.validateProductInCart(productData.productName, productData.price, productData.quantity, productData.totalPrice);
+    await cartPage.validateProductInCart(testData.productName, testData.price, testData.quantity, testData.totalPrice);
 
 
 })

@@ -1,4 +1,4 @@
-export const productData = {
+export const qaData = {
     brandName: 'POLO',
     productName: 'Blue Top',
     quantity: '1',
